@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONGC EPEC — Offshore Projects | 2023</title>
+    <style>
+        
+        /* ── Reset & Base ── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            
+        background: linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #0a2e1f 100%);
+        
+            color: #e8e8e8;
+        }
+
+        /* Dark overlay on top of background for readability */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 15, 30, 0.72);
+            z-index: 0;
+        }
+
+        /* All content sits above the overlay */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(90deg, rgba(0,60,120,0.95) 0%, rgba(0,100,60,0.90) 100%);
+            border-bottom: 3px solid #f0a500;
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .ongc-logo-img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .header-title h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #f0a500;
+            text-transform: uppercase;
+        }
+
+        .header-title h2 {
+            font-size: 13px;
+            font-weight: 400;
+            color: #b0c8e0;
+            letter-spacing: 1.5px;
+            margin-top: 3px;
+        }
+
+        .header-badge {
+            background: rgba(240,165,0,0.15);
+            border: 1px solid rgba(240,165,0,0.4);
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-size: 12px;
+            color: #f0a500;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ── Nav Breadcrumb ── */
+        .breadcrumb {
+            background: rgba(0,0,0,0.3);
+            padding: 10px 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-size: 13px;
+            color: #7a9ab8;
+        }
+
+        .breadcrumb a {
+            color: #7a9ab8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: #f0a500; }
+        .breadcrumb span { color: #b0c8e0; margin: 0 8px; }
+
+        /* ── Main Content ── */
+        .main-content {
+            flex: 1;
+            padding: 50px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #f0a500, #00a86b);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #7a9ab8;
+            font-size: 14px;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* ── Cards Grid ── */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+
+        /* ── Division Card (Home page) ── */
+        .division-card {
+            background: linear-gradient(145deg, rgba(0,40,80,0.85), rgba(0,25,50,0.90));
+            border: 1px solid rgba(240,165,0,0.25);
+            border-radius: 16px;
+            padding: 40px 30px;
+            width: 300px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .division-card:hover {
+            transform: translateY(-8px);
+            border-color: #f0a500;
+            box-shadow: 0 16px 48px rgba(240,165,0,0.2);
+            background: linear-gradient(145deg, rgba(0,60,120,0.90), rgba(0,40,80,0.95));
+        }
+
+        .division-card .icon {
+            font-size: 52px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .division-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f0a500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .division-card p {
+            font-size: 13px;
+            color: #7a9ab8;
+            line-height: 1.6;
+        }
+
+        .division-card .project-count {
+            margin-top: 16px;
+            background: rgba(240,165,0,0.1);
+            border: 1px solid rgba(240,165,0,0.3);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 12px;
+            color: #f0a500;
+            display: inline-block;
+        }
+
+        /* ── Year Card ── */
+        .year-card {
+            background: linear-gradient(145deg, rgba(0,40,80,0.80), rgba(0,25,50,0.85));
+            border: 1px solid rgba(100,160,220,0.25);
+            border-radius: 12px;
+            padding: 22px 28px;
+            width: 140px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+
+        .year-card:hover {
+            transform: translateY(-5px);
+            border-color: #f0a500;
+            box-shadow: 0 10px 30px rgba(240,165,0,0.2);
+        }
+
+        .year-card .year-number {
+            font-size: 26px;
+            font-weight: 800;
+            color: #f0a500;
+            letter-spacing: 1px;
+        }
+
+        .year-card .project-count {
+            font-size: 12px;
+            color: #7a9ab8;
+            margin-top: 6px;
+        }
+
+        .year-card.no-projects {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* ── Project Card ── */
+        .project-card {
+            background: linear-gradient(145deg, rgba(0,50,30,0.75), rgba(0,30,60,0.80));
+            border: 1px solid rgba(0,168,107,0.25);
+            border-radius: 14px;
+            padding: 28px 24px;
+            width: 260px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00a86b, #f0a500);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #00a86b;
+            box-shadow: 0 14px 40px rgba(0,168,107,0.2);
+            cursor: pointer;
+        }
+
+        .project-card .icon {
+            font-size: 38px;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .project-card h5 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #e8e8e8;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .project-card .year-tag {
+            font-size: 12px;
+            color: #00a86b;
+            font-weight: 600;
+        }
+
+        .project-card.no-link {
+            opacity: 0.7;
+        }
+
+        .project-card.no-link:hover {
+            cursor: not-allowed;
+        }
+
+        .link-status {
+            margin-top: 10px;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .link-status.linked {
+            background: rgba(0,168,107,0.15);
+            color: #00a86b;
+            border: 1px solid rgba(0,168,107,0.3);
+        }
+
+        .link-status.not-linked {
+            background: rgba(255,100,0,0.1);
+            color: #ff8040;
+            border: 1px solid rgba(255,100,0,0.2);
+        }
+
+        /* ── Bottom Nav Buttons ── */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: auto;
+        }
+
+        .btn {
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-back {
+            background: rgba(255,255,255,0.08);
+            color: #b0c8e0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .btn-home {
+            background: linear-gradient(90deg, #003c78, #005a40);
+            color: white;
+            border: 1px solid rgba(240,165,0,0.3);
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(90deg, #004e9a, #007a55);
+            box-shadow: 0 4px 15px rgba(240,165,0,0.2);
+        }
+
+        /* ── Modal (About) ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-box {
+            background: linear-gradient(145deg, #0a1e3a, #0a2e1f);
+            border: 1px solid rgba(240,165,0,0.4);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        }
+
+        .modal-box h3 {
+            font-size: 20px;
+            color: #f0a500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(240,165,0,0.2);
+        }
+
+        .modal-box p {
+            font-size: 15px;
+            color: #b0c8e0;
+            line-height: 1.8;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            background: none;
+            border: none;
+            color: #7a9ab8;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover { color: #f0a500; }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 14px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.25);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            letter-spacing: 1px;
+        }
+
+        /* ── Empty State ── */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7a9ab8;
+        }
+
+        .empty-state .icon { font-size: 48px; display: block; margin-bottom: 16px; }
+        .empty-state p { font-size: 15px; }
+    
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+
+        
+        <div class="header">
+            <div class="header-left">
+                <img src="ongc_logo.png" class="ongc-logo-img">
+                <div class="header-title">
+                    <h1>ONGC</h1>
+                    <h2>Engineering and Projects Excellence Centre &mdash; EPEC</h2>
+                </div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:center;">
+                
+                <div class="header-badge">EPEC</div>
+            </div>
+        </div>
+    
+
+        <!-- Breadcrumb navigation -->
+        <div class="breadcrumb">
+            <a href="index.html">🏠 Home</a>
+            <span>›</span>
+            <a href="division_offshore_works.html">Offshore Projects</a>
+            <span>›</span>
+            2023
+        </div>
+
+        <div class="main-content">
+            <div class="section-title">
+                <h3>Offshore Projects — 2023</h3>
+                <div class="underline"></div>
+                <p>1 project completed in 2023</p>
+            </div>
+
+            <div class="cards-grid">
+                
+                    <div class="project-card no-link" title="Folder not yet linked — see projects_data.py">
+                        <span class="icon">📂</span>
+                        <h5>HEERA REDEVELOPMENT PROJECT (HRP) Phase III</h5>
+                        <div class="year-tag">📅 2023</div>
+                        <span class="link-status not-linked">⚠ Not Linked</span>
+                    </div>
+                
+            </div>
+        </div>
+
+        <!-- Bottom navigation buttons -->
+        <div class="nav-buttons">
+            <a href="division_offshore_works.html" class="btn btn-back">← Back to Years</a>
+            <a href="index.html" class="btn btn-home">🏠 Home</a>
+        </div>
+
+        
+        <div class="footer">
+            ONGC &bull; Engineering and Projects Excellence Centre (EPEC) &bull; Project Information Dashboard
+        </div>
+    
+    </div>
+
+    <script>
+        /**
+         * openFolder: Opens a local folder in Windows Explorer (or Mac Finder).
+         *
+         * HOW IT WORKS:
+         * - It creates a temporary <a> tag pointing to the file:// path
+         * - On Windows this opens the folder in Explorer
+         * - Note: Some browsers block local file links for security.
+         *   If it does not work, try opening the dashboard in Firefox,
+         *   or use the path shown in the browser's address bar.
+         */
+        function openFolder(folderPath) {
+            var link = document.createElement('a');
+            link.href = 'file:///' + folderPath;
+            link.target = '_blank';
+            link.click();
+        }
+    </script>
+</body>
+</html>
