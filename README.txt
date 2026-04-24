@@ -17,7 +17,7 @@ FILES IN THIS FOLDER:
   Make sure Python is installed on your computer.
   Then install the required library by running in Command Prompt:
 
-      pip install pandas openpyxl
+      pip3 install pandas openpyxl
 
 ===============================================================================
   STEP 2: RUN THE DASHBOARD (First Time)
@@ -27,7 +27,7 @@ FILES IN THIS FOLDER:
   2. Navigate to this folder:
          cd C:\Path\To\This\Folder
   3. Run the generator:
-         python dashboard_generator.py
+         python3 dashboard_generator.py
   4. The dashboard will open automatically in your browser!
      If it doesn't open, go to the "dashboard_output" folder
      and double-click "index.html"
@@ -46,10 +46,10 @@ FILES IN THIS FOLDER:
        COLUMN_YEAR          = "Year"                 ← exact column heading in Excel
 
   d) Save and run:
-         python import_from_excel.py
+         python3 import_from_excel.py
 
   e) Then rebuild the dashboard:
-         python dashboard_generator.py
+         python3 dashboard_generator.py
 
 ===============================================================================
   STEP 4: LINK PROJECT FOLDERS

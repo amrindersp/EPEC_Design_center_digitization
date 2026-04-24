@@ -29,11 +29,11 @@ import sys
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Name of your Excel file (must be in the same folder as this script)
-EXCEL_FILENAME = "Offshore_completed_projects_list_(15 years).xlsx"
+EXCEL_FILENAME = "Onshore_Projects.xlsx"
 
 # Which division to import into?
 # Options: "offshore_design" | "offshore_works" | "onshore"
-DIVISION_KEY = "offshore_works"
+DIVISION_KEY = "onshore"
 
 # Column name in your Excel file that contains the PROJECT NAME
 # (Check your Excel file — it must match exactly, including capitals)

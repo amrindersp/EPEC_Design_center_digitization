@@ -118,7 +118,7 @@ DIVISIONS = {
     },  # ← End of Offshore Design
 
     # ─────────────────────────────────────────────────────────────────
-    # DIVISION: OFFSHORE WORKS
+    # DIVISION: OFFSHORE PROJECTS
     # ─────────────────────────────────────────────────────────────────
     "offshore_works": {
         "name":        "Offshore Projects",
@@ -226,7 +226,7 @@ DIVISIONS = {
             ],
 
         }
-    },  # ← End of Offshore Works
+    },  # ← End of Offshore Projects
 
     # ─────────────────────────────────────────────────────────────────
     # DIVISION: ONSHORE PROJECTS
@@ -258,8 +258,7 @@ DIVISIONS = {
             ],
 
             "2014": [
-                # No projects for 2014
-                # {"name": "Project Name", "path": ""},
+                {"name": "Surface facilities at Cauvery Asset", "path": ""},
             ],
 
             "2015": [
@@ -268,58 +267,104 @@ DIVISIONS = {
             ],
 
             "2016": [
-                # No projects for 2016
-                # {"name": "Project Name", "path": ""},
+                {"name": "6 ETPs Ahmedabad and Ankleshwar", "path": ""},
+                {"name": "UGFPS Ankleshwar", "path": ""},
+                {"name": "6 ETPs Ahmedabad and Ankleshwar 1", "path": ""},
             ],
 
             "2017": [
-                # No projects for 2017
-                # {"name": "Project Name", "path": ""},
+                {"name": "3 ETPs Rajahmundry", "path": ""},
             ],
 
             "2018": [
-                # No projects for 2018
-                # {"name": "Project Name", "path": ""},
+                {"name": "PRP Ahmedabad", "path": ""},
+                {"name": "Gas Compressors Ahmedabad", "path": ""},
+                {"name": "Nawagam - Koyali Pipeline", "path": ""},
+                {"name": "Gamij Redevelopment", "path": ""},
+                {"name": "1 ETP at GGS Nada", "path": ""},
+                {"name": "6 PLRP  Assam", "path": ""},
+                {"name": "3 ETPs Mehsana", "path": ""},
             ],
 
             "2019": [
-                # No projects for 2019
-                # {"name": "Project Name", "path": ""},
+                {"name": "Assam Renewal Project", "path": ""},
+                {"name": "1 ETP and 3 ETP cum WIPs Assam", "path": ""},
+                {"name": "MB Lal at  Mehsana", "path": ""},
             ],
 
             "2020": [
-                # No projects for 2020
-                # {"name": "Project Name", "path": ""},
+                {"name": "MB Lal at  Ahmedabad", "path": ""},
+                {"name": "Up-gradation of Fire Fighting Facilities at Four(4) CTFs of Mehsana Asset (UGFFS-MHN)", "path": ""},
             ],
 
             "2021": [
-                # No projects for 2021
-                # {"name": "Project Name", "path": ""},
+                {"name": "Pipeline Network Project, Geleki, Assam Asset", "path": ""},
+                {"name": "Madanam CPF & PLP Project", "path": ""},
+                {"name": "Four Installation Revamping Project, Mehsana", "path": ""},
+                {"name": "Construction of Produced Water Treatment Plant of 4000 M3/day capacity at North Santhal in Mehsana Asset", "path": ""},
+                {"name": "Creation of Gojalia GCS, Tripura Asset", "path": ""},
             ],
 
             "2022": [
-                # No projects for 2022
-                # {"name": "Project Name", "path": ""},
+                {"name": "MB Lal at  CPF Gandhar and CTF Ankleshwar", "path": ""},
+                {"name": "MB Lal at  Geleki", "path": ""},
+                {"name": "Construction of Crude Oil Storage Tanks & Firefighting facilities at Cauvery Asset", "path": ""},
+                {"name": "Nandasan Surface Facilities Project, Mehsana Asset", "path": ""},
+                {"name": "Gamnewala GCS and Pipeline", "path": ""},
             ],
 
             "2023": [
-                # No projects for 2023
-                # {"name": "Project Name", "path": ""},
+                {"name": "Booster Gas Compressor Project, Ramol, Ahmedabad", "path": ""},
+                {"name": "Hot Flare System Ahmedabad", "path": ""},
+                {"name": "UGFS-AAC", "path": ""},
+                {"name": "GCP Ankleshwar", "path": ""},
+                {"name": "GRP- Ankleshwar", "path": ""},
+                {"name": "CBM Bokaro Project", "path": ""},
+                {"name": "Anklav Surface Facilities Cambay", "path": ""},
+                {"name": "Flare Stacks Installation & Other Installation works at Cauvery Asset (Flare_cav)", "path": ""},
             ],
 
             "2024": [
-                # No projects for 2024
-                # {"name": "Project Name", "path": ""},
+                {"name": "Balance work of Up-gradation of Fire Fighting System at Ankleshwar, Ahmedabad, Assam & Cauvery Assets (UGFS-AAAC)", "path": ""},
+                {"name": "RFS Assam Group A", "path": ""},
+                {"name": "GDU-DPD Cauvery", "path": ""},
+                {"name": "Produced Water Treatment Plant Project at Sobhasan & Bechraji fields of Mehsana Asset (2PWTP Mehsana)", "path": ""},
+                {"name": "GDU-DPD Rajahmundry", "path": ""},
             ],
 
             "2025": [
-                # No projects for 2025
-                # {"name": "Project Name", "path": ""},
+                {"name": "RFS Assam Group B", "path": ""},
+                {"name": "GCP Lakwa", "path": ""},
+                {"name": "North Kadi Produced water Treatment Plant, Mehsana", "path": ""},
+                {"name": "Replacement of Air Compressor At Mehsana( RAC Santhal)", "path": ""},
+                {"name": "Revamping of Fire Protection systems at installations of Mehsana Asset(RFPS Mehsana)", "path": ""},
+                {"name": "North Kadi Polymer Flooding Project", "path": ""},
+                {"name": "Revamping of Slug Catcher, Uran", "path": ""},
             ],
 
             "2026": [
-                # No projects for 2026
-                # {"name": "Project Name", "path": ""},
+                {"name": "Laying of Pipelines in Nawagam & Kalol", "path": ""},
+                {"name": "ETP Jahlora and South Kadi", "path": ""},
+                {"name": "Replacement of pipelines of RDS and Satellite fields of Assam Asset(PNP RDS)", "path": ""},
+                {"name": "PNP Laiplinggaon", "path": ""},
+                {"name": "Borholla GGS Life Extension Project", "path": ""},
+                {"name": "Creation of HP Gas Compression Facilities at Geleki, Assam Asset.", "path": ""},
+                {"name": "Development of Jharia CBM Block- Facility", "path": ""},
+                {"name": "Rerouting of 10” ND Trunk pipeline in Akholjuni area at Cambay Asset", "path": ""},
+                {"name": "Restoration of Gas Terminal Ph-I(Part A)", "path": ""},
+                {"name": "Restoration of Gas Terminal Part B", "path": ""},
+                {"name": "Borholla GGS Life Extension Project", "path": ""},
+                {"name": "Old Pipeline Replacement Project, Mehsana Asset", "path": ""},
+                {"name": "Air and Gas PRP - Mehsana Asset", "path": ""},
+                {"name": "Construction of 66-11 KV GIS Substation at Sobhasan GGS II", "path": ""},
+                {"name": "Construction of 66-11 KV GIS Substation at Linch GGS", "path": ""},
+                {"name": "Redevelopment of Sobhasan Complex", "path": ""},
+                {"name": "Re-Development of Linch Field", "path": ""},
+                {"name": "Creation of Gas Compression and Dehydration facilities Jotana GGS MHN Asset", "path": ""},
+                {"name": "Gas Dehydration Facilities Tripura Asset", "path": ""},
+                {"name": "CSU Off Gas Compressor, Uran", "path": ""},
+                {"name": "ISBL PRP, URAN", "path": ""},
+                {"name": "Replacement of Flare Pipe Network, Uran", "path": ""},
             ],
 
         }

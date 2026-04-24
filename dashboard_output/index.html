@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONGC EPEC — Project Dashboard</title>
+    <title>ONGC EPEC — Dashboard</title>
     <style>
-        
         /* ── Reset & Base ── */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,7 +17,14 @@
             color: #e8e8e8;
         }
 
-        /* Dark overlay on top of background for readability */
+        .ongc-logo-img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        
+        /* Semi-transparent dark overlay on top of background for readability */
         body::before {
             content: '';
             position: fixed;
@@ -27,7 +33,7 @@
             z-index: 0;
         }
 
-        /* All content sits above the overlay */
+        /* All page content sits above the overlay */
         .page-wrapper {
             position: relative;
             z-index: 1;
@@ -40,7 +46,7 @@
         .header {
             background: linear-gradient(90deg, rgba(0,60,120,0.95) 0%, rgba(0,100,60,0.90) 100%);
             border-bottom: 3px solid #f0a500;
-            padding: 18px 40px;
+            padding: 14px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -50,18 +56,28 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 14px;
         }
 
-        .ongc-logo-img {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
+        /* Circular ONGC logo badge in the header */
+        .ongc-logo {
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(135deg, #f0a500, #e06000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -1px;
+            box-shadow: 0 0 18px rgba(240,165,0,0.5);
             flex-shrink: 0;
         }
 
         .header-title h1 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             letter-spacing: 3px;
             color: #f0a500;
@@ -69,28 +85,80 @@
         }
 
         .header-title h2 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 400;
             color: #b0c8e0;
             letter-spacing: 1.5px;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
+        /* ── Header Right Section ── */
+        /* Contains: User Info Pill + About button + Logout button + EPEC badge */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Pill that shows logged-in user's name and role */
+        .user-info-pill {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 12px;
+            color: #b0c8e0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-info-pill .user-name {
+            color: #f0a500;
+            font-weight: 600;
+        }
+
+        .user-info-pill .user-role {
+            color: #7a9ab8;
+            font-size: 11px;
+        }
+
+        /* EPEC badge on the right end of header */
         .header-badge {
             background: rgba(240,165,0,0.15);
             border: 1px solid rgba(240,165,0,0.4);
             border-radius: 20px;
-            padding: 6px 18px;
+            padding: 6px 16px;
             font-size: 12px;
             color: #f0a500;
             letter-spacing: 2px;
             font-weight: 600;
         }
 
-        /* ── Nav Breadcrumb ── */
+        /* Logout button in the header */
+        .btn-logout {
+            background: rgba(180,40,40,0.20);
+            border: 1px solid rgba(220,80,80,0.35);
+            border-radius: 8px;
+            padding: 7px 16px;
+            color: #ff9090;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 1px;
+        }
+
+        .btn-logout:hover {
+            background: rgba(220,50,50,0.35);
+            color: white;
+        }
+
+        /* ── Breadcrumb Navigation Bar ── */
+        /* Shown on Division and Projects pages to show current location */
         .breadcrumb {
             background: rgba(0,0,0,0.3);
-            padding: 10px 40px;
+            padding: 9px 30px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             font-size: 13px;
             color: #7a9ab8;
@@ -103,30 +171,37 @@
         }
 
         .breadcrumb a:hover { color: #f0a500; }
-        .breadcrumb span { color: #b0c8e0; margin: 0 8px; }
 
-        /* ── Main Content ── */
+        /* Arrow separator between breadcrumb items */
+        .breadcrumb span {
+            color: #b0c8e0;
+            margin: 0 8px;
+        }
+
+        /* ── Main Content Area ── */
         .main-content {
             flex: 1;
-            padding: 50px 40px;
+            padding: 44px 30px;
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
         }
 
+        /* Section title used on Division and Projects pages */
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 44px;
         }
 
         .section-title h3 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
+        /* Coloured underline beneath section titles */
         .section-title .underline {
             width: 80px;
             height: 3px;
@@ -142,21 +217,22 @@
             letter-spacing: 1px;
         }
 
-        /* ── Cards Grid ── */
+        /* ── Cards Grid Layout ── */
+        /* Used on all three page types to arrange cards */
         .cards-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 28px;
+            gap: 26px;
             justify-content: center;
         }
 
-        /* ── Division Card (Home page) ── */
+        /* ── Division Card (Home Page) ── */
         .division-card {
             background: linear-gradient(145deg, rgba(0,40,80,0.85), rgba(0,25,50,0.90));
             border: 1px solid rgba(240,165,0,0.25);
             border-radius: 16px;
-            padding: 40px 30px;
-            width: 300px;
+            padding: 36px 28px;
+            width: 290px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -174,13 +250,13 @@
         }
 
         .division-card .icon {
-            font-size: 52px;
-            margin-bottom: 18px;
+            font-size: 50px;
+            margin-bottom: 16px;
             display: block;
         }
 
         .division-card h4 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             color: #f0a500;
             letter-spacing: 1.5px;
@@ -194,6 +270,7 @@
             line-height: 1.6;
         }
 
+        /* Project count badge on Division cards */
         .division-card .project-count {
             margin-top: 16px;
             background: rgba(240,165,0,0.1);
@@ -205,13 +282,13 @@
             display: inline-block;
         }
 
-        /* ── Year Card ── */
+        /* ── Year Card (Division Page) ── */
         .year-card {
             background: linear-gradient(145deg, rgba(0,40,80,0.80), rgba(0,25,50,0.85));
             border: 1px solid rgba(100,160,220,0.25);
             border-radius: 12px;
-            padding: 22px 28px;
-            width: 140px;
+            padding: 20px 26px;
+            width: 135px;
             text-align: center;
             cursor: pointer;
             transition: all 0.25s ease;
@@ -228,10 +305,9 @@
         }
 
         .year-card .year-number {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             color: #f0a500;
-            letter-spacing: 1px;
         }
 
         .year-card .project-count {
@@ -240,19 +316,20 @@
             margin-top: 6px;
         }
 
+        /* Years with no projects are greyed out and non-clickable */
         .year-card.no-projects {
-            opacity: 0.45;
+            opacity: 0.40;
             cursor: default;
             pointer-events: none;
         }
 
-        /* ── Project Card ── */
+        /* ── Project Card (Projects Page) ── */
         .project-card {
             background: linear-gradient(145deg, rgba(0,50,30,0.75), rgba(0,30,60,0.80));
             border: 1px solid rgba(0,168,107,0.25);
             border-radius: 14px;
-            padding: 28px 24px;
-            width: 260px;
+            padding: 26px 22px;
+            width: 255px;
             text-align: center;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -263,6 +340,7 @@
             overflow: hidden;
         }
 
+        /* Coloured top stripe on each project card */
         .project-card::before {
             content: '';
             position: absolute;
@@ -279,13 +357,13 @@
         }
 
         .project-card .icon {
-            font-size: 38px;
-            margin-bottom: 14px;
+            font-size: 36px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .project-card h5 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #e8e8e8;
             line-height: 1.4;
@@ -298,14 +376,11 @@
             font-weight: 600;
         }
 
-        .project-card.no-link {
-            opacity: 0.7;
-        }
+        /* Project cards without a linked folder are slightly faded */
+        .project-card.no-link { opacity: 0.7; }
+        .project-card.no-link:hover { cursor: not-allowed; }
 
-        .project-card.no-link:hover {
-            cursor: not-allowed;
-        }
-
+        /* Linked / Not Linked status badge on project cards */
         .link-status {
             margin-top: 10px;
             font-size: 11px;
@@ -326,19 +401,20 @@
             border: 1px solid rgba(255,100,0,0.2);
         }
 
-        /* ── Bottom Nav Buttons ── */
+        /* ── Bottom Navigation Button Bar ── */
+        /* Shown at the bottom of Division and Projects pages */
         .nav-buttons {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 18px 30px;
             background: rgba(0,0,0,0.3);
             border-top: 1px solid rgba(255,255,255,0.08);
             margin-top: auto;
         }
 
         .btn {
-            padding: 10px 28px;
+            padding: 10px 26px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
@@ -350,17 +426,16 @@
             display: inline-block;
         }
 
+        /* Back button (left side) */
         .btn-back {
             background: rgba(255,255,255,0.08);
             color: #b0c8e0;
             border: 1px solid rgba(255,255,255,0.15);
         }
 
-        .btn-back:hover {
-            background: rgba(255,255,255,0.15);
-            color: white;
-        }
+        .btn-back:hover { background: rgba(255,255,255,0.15); color: white; }
 
+        /* Home button (right side) */
         .btn-home {
             background: linear-gradient(90deg, #003c78, #005a40);
             color: white;
@@ -372,7 +447,7 @@
             box-shadow: 0 4px 15px rgba(240,165,0,0.2);
         }
 
-        /* ── Modal (About) ── */
+        /* ── About Modal Popup ── */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -383,122 +458,136 @@
             justify-content: center;
         }
 
+        /* Modal is shown by adding the 'active' class */
         .modal-overlay.active { display: flex; }
 
         .modal-box {
             background: linear-gradient(145deg, #0a1e3a, #0a2e1f);
             border: 1px solid rgba(240,165,0,0.4);
             border-radius: 16px;
-            padding: 40px;
-            max-width: 600px;
+            padding: 38px;
+            max-width: 580px;
             width: 90%;
             position: relative;
             box-shadow: 0 24px 80px rgba(0,0,0,0.6);
         }
 
         .modal-box h3 {
-            font-size: 20px;
+            font-size: 19px;
             color: #f0a500;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
             border-bottom: 1px solid rgba(240,165,0,0.2);
         }
 
-        .modal-box p {
-            font-size: 15px;
-            color: #b0c8e0;
-            line-height: 1.8;
-        }
+        .modal-box p { font-size: 14px; color: #b0c8e0; line-height: 1.8; }
 
+        /* Close (X) button in the top-right corner of the modal */
         .modal-close {
             position: absolute;
-            top: 15px; right: 20px;
+            top: 14px; right: 18px;
             background: none;
             border: none;
             color: #7a9ab8;
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             transition: color 0.2s;
         }
 
         .modal-close:hover { color: #f0a500; }
 
-        /* ── Footer ── */
+        /* ── Page Footer ── */
         .footer {
             text-align: center;
-            padding: 14px;
+            padding: 12px;
             font-size: 11px;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.20);
             border-top: 1px solid rgba(255,255,255,0.05);
             letter-spacing: 1px;
         }
 
-        /* ── Empty State ── */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #7a9ab8;
-        }
-
+        /* ── Empty State Message ── */
+        /* Shown when a year has no projects */
+        .empty-state { text-align: center; padding: 60px 20px; color: #7a9ab8; }
         .empty-state .icon { font-size: 48px; display: block; margin-bottom: 16px; }
         .empty-state p { font-size: 15px; }
-    
 
-        /* Home-page specific: big welcome title */
-        .welcome-banner {
-            text-align: center;
-            padding: 50px 20px 30px;
-        }
-        .ongc-logo-img {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
+        /* ── Home Page: Welcome Banner ── */
+        .welcome-banner { text-align: center; padding: 44px 20px 26px; }
+
         .welcome-banner h2 {
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 4px;
             text-transform: uppercase;
         }
 
-        .welcome-banner h2 span {
-            color: #f0a500;
-        }
+        /* "Dashboard" word in the title is highlighted in orange */
+        .welcome-banner h2 span { color: #f0a500; }
 
-        .welcome-banner p {
-            margin-top: 12px;
+        /* Personalised welcome message shown below the main title */
+        .welcome-user {
             font-size: 15px;
-            color: #7a9ab8;
-            letter-spacing: 1.5px;
+            color: #b0c8e0;
+            margin-top: 10px;
         }
 
+        .welcome-user strong { color: #f0a500; }
+
+        /* Horizontal divider line on the home page */
         .section-separator {
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(240,165,0,0.3), transparent);
-            margin: 40px 0;
+            margin: 36px 0;
         }
 
-        /* "PROJECTS" section heading */
+        /* "SELECT DIVISION" label above the division cards */
         .projects-section-label {
             text-align: center;
             font-size: 13px;
             letter-spacing: 4px;
             color: #7a9ab8;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
     </style>
 </head>
 <body>
+
+    <!-- SESSION GUARD: Redirects to login.html if user is not logged in -->
+    
+    <script>
+        // ── Session Guard ──
+        // Runs immediately when the page loads (before anything is shown).
+        // If the user is not logged in, they are sent back to login.html.
+        (function() {
+            if (!sessionStorage.getItem('ongc_logged_in')) {
+                window.location.replace('login.html');
+            }
+        })();
+
+        // ── Logout Function ──
+        // Called when the user clicks the Logout button in the header.
+        // Clears all session data and redirects to login.html.
+        function logoutUser() {
+            if (confirm('Are you sure you want to logout?')) {
+                sessionStorage.clear();
+                window.location.replace('login.html');
+            }
+        }
+    </script>
+    
+
     <div class="page-wrapper">
 
         
         <div class="header">
+
+            <!-- Left side: Logo + Title -->
             <div class="header-left">
                 <img src="ongc_logo.png" class="ongc-logo-img">
                 <div class="header-title">
@@ -506,21 +595,55 @@
                     <h2>Engineering and Projects Excellence Centre &mdash; EPEC</h2>
                 </div>
             </div>
-            <div style="display:flex; gap:12px; align-items:center;">
+
+            <!-- Right side: User pill + About + Logout + Badge -->
+            <div class="header-right">
+
+                <!-- User Info Pill: hidden by default, shown by JS if user is logged in -->
+                <div class="user-info-pill" id="userInfoPill" style="display:none;">
+                    👤
+                    <span class="user-name" id="headerUserName"></span>
+                    &nbsp;|&nbsp;
+                    <span class="user-role" id="headerUserRole"></span>
+                </div>
+
                 
-            <button class="btn btn-home" onclick="document.getElementById('aboutModal').classList.add('active')"
-                    style="background: linear-gradient(90deg, #a07000, #006040); font-size:13px;">
+            <button class="btn btn-home"
+                    onclick="document.getElementById('aboutModal').classList.add('active')"
+                    style="background: linear-gradient(90deg, #a07000, #006040);
+                           font-size:12px; padding: 7px 16px;">
                 ℹ️ About
             </button>
         
+
+                <!-- Logout Button: calls logoutUser() defined in the session guard -->
+                <button class="btn-logout" onclick="logoutUser()">⏻ Logout</button>
+
                 <div class="header-badge">EPEC</div>
+
             </div>
         </div>
+
+        <!-- Populate user info pill from sessionStorage -->
+        <script>
+            (function() {
+                var name = sessionStorage.getItem('ongc_user_name');
+                var role = sessionStorage.getItem('ongc_user_role');
+                if (name) {
+                    document.getElementById('headerUserName').textContent = name;
+                    document.getElementById('headerUserRole').textContent = role || '';
+                    document.getElementById('userInfoPill').style.display = 'flex';
+                }
+            })();
+        </script>
     
         
         <div class="modal-overlay" id="aboutModal">
             <div class="modal-box">
-                <button class="modal-close" onclick="document.getElementById('aboutModal').classList.remove('active')">✕</button>
+                <button class="modal-close"
+                        onclick="document.getElementById('aboutModal').classList.remove('active')">
+                    ✕
+                </button>
                 <h3>About This Dashboard</h3>
                 <p>This Dashboard has been made to enable structured access, systematic compilation, effective data management, and long-term preservation of legacy engineering and project information pertaining to all Onshore and Offshore projects executed over the past few years.</p>
             </div>
@@ -532,14 +655,17 @@
             <!-- Welcome Banner -->
             <div class="welcome-banner">
                 <h2>Project <span>Dashboard</span></h2>
-                <p>Select a Division to browse projects by year</p>
+                <!-- This paragraph is updated by JS below with the logged-in user's name -->
+                <p class="welcome-user" id="welcomeMsg">
+                    Select a Division to browse projects by year
+                </p>
             </div>
 
             <div class="section-separator"></div>
 
-            <!-- Division Cards -->
             <div class="projects-section-label">📁 Select Division</div>
 
+            <!-- Division Cards Grid -->
             <div class="cards-grid">
                 
             <a href="division_offshore_design.html" class="division-card">
@@ -560,7 +686,7 @@
                 <span class="icon">🏭</span>
                 <h4>Onshore Projects</h4>
                 <p>Onshore drilling, production, pipeline, and plant engineering projects.</p>
-                <span class="project-count">0 Projects</span>
+                <span class="project-count">69 Projects</span>
             </a>
         
             </div>
@@ -572,13 +698,27 @@
             ONGC &bull; Engineering and Projects Excellence Centre (EPEC) &bull; Project Information Dashboard
         </div>
     
+
     </div>
 
     <script>
-        // Close modal when clicking outside the box
+        // ── Personalised Welcome Message ──
+        // Reads the logged-in user's name and division from sessionStorage
+        // and updates the welcome message on the page.
+        var userName = sessionStorage.getItem('ongc_user_name');
+        var userDiv  = sessionStorage.getItem('ongc_user_div');
+        if (userName) {
+            document.getElementById('welcomeMsg').innerHTML =
+                'Welcome, <strong>' + userName + '</strong>' +
+                (userDiv ? ' &mdash; ' + userDiv : '') +
+                ' &nbsp;|&nbsp; Select a Division to browse projects';
+        }
+
+        // Close the About modal when clicking outside the modal box
         document.getElementById('aboutModal').addEventListener('click', function(e) {
             if (e.target === this) this.classList.remove('active');
         });
     </script>
+
 </body>
 </html>
